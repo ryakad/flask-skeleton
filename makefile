@@ -8,16 +8,16 @@
 #
 
 # THe name of the module that our app is contained in
-modulename = "skeleton"
+modulename = skeleton
 
 # Find the path to the python binaries that we are using.
 python33 = `which python3.3`
 python27 = `which pytohn2.7`
 
 
-.PHONY: js css pip
+.PHONY: js css scripts pip
 
-all: pip css js config.yml
+all: pip scripts config.yml
 
 config.yml:
 	cp config.yml.dist config.yml
@@ -40,9 +40,11 @@ node:
 bower: node
 	./node_modules/.bin/bower install
 
+scripts: css js
+
 css: node bower
 	if ! [ -d $(modulename)/static/c/css ]; then mkdir -p $(modulename)/static/c/css; fi
-	./node_modules/.bin/lessc scripts/less/init.less $(modulename)/static/c/css/core.css
+	./node_modules/.bin/lessc --compress scripts/less/init.less $(modulename)/static/c/css/skeleton.css
 
 js: node bower
 	if ! [ -d $(modulename)/static/c/js ]; then mkdir -p $(modulename)/static/c/js; fi
@@ -51,6 +53,7 @@ js: node bower
 	cp bower_components/jquery/dist/jquery.min.js $(modulename)/static/c/js/jquery.min.js
 	cp bower_components/jquery/dist/jquery.min.map $(modulename)/static/c/js/jquery.min.map
 	./node_modules/.bin/yuicompressor bower_components/underscore/underscore.js > $(modulename)/static/c/js/underscore.js
+	./node_modules/.bin/yuicompressor scripts/js/skeleton.js > $(modulename)/static/c/js/skeleton.js
 
 clean:
 	rm -Rf node_modules

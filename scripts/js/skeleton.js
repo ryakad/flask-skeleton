@@ -7,3 +7,6 @@
  * @author Ryan Kadwell <ryan@riaka.ca>
  */
 
+$(function() {
+   console.log('Application loaded');
+});

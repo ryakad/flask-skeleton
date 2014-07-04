@@ -5,8 +5,10 @@
 
     <title>{% block title %}Flask Skeleton{% endblock %}</title>
 
+    <link rel="icon" href="/static/img/favicon.ico">
+
     {% block styles %}
-      <link rel="icon" type="image/png" href="/static/img/cw-icon.png">
+      <link rel="stylesheet" href="{{ config.STATIC_FOLDER }}/c/css/skeleton.css"/>
     {% endblock %}
   </head>
   <body>
@@ -14,6 +16,7 @@
     {% block scripts %}
       <script src="{{ config.STATIC_FOLDER }}/c/js/jquery.min.js"></script>
       <script src="{{ config.STATIC_FOLDER }}/c/js/underscore.js"></script>
+      <script src="{{ config.STATIC_FOLDER }}/c/js/skeleton.js"></script>
     {% endblock %}
   </body>
 </html>
