@@ -1,0 +1,23 @@
+#
+# Flask Skeleton
+# Copyright (c) Ryan Kadwell <ryan@riaka.ca>
+#
+# Main configuration file. To use simply copy to config.yml and then fill in
+# your desired values. You can access config values from the application
+# using::
+#
+#    # IN YAML
+#    parent:
+#       child:
+#          nextchild: value
+#
+#    # IN PYTHON
+#    app.config.get('parent.child.nextchild', 'default_if_not_found')
+#
+# Author: Ryan Kadwell <ryan@riaka.ca>
+#
+
+debug: False
+
+# the url that we are serving static files from. Located in skeleton/static
+static_folder: /static

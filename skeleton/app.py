@@ -11,6 +11,7 @@ import os
 import sys
 from flask import Flask
 from .frontend import frontend
+from .config import SkeletonConfig
 
 __all__ = ["get_app"]
 
@@ -18,16 +19,28 @@ DEFAULT_BLUEPRINTS = [
    frontend
 ]
 
+MODULE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.abspath(MODULE_DIR + "/..")
+
+# Overwrite the Flask application to set the default config object to our
+# skeleton config
+class SkeletonFlask(Flask):
+   def make_config(self, instance_relative=False):
+      root_path = self.root_path
+      if instance_relative:
+         root_path = self.instance_path
+
+      return SkeletonConfig(root_path, self.default_config)
+
 
 def get_app(config=None, app_name=None, blueprints=None):
    """Returns a flask application"""
-   app = Flask(__name__)
+   app = SkeletonFlask(__name__)
 
    if blueprints is None:
       blueprints = DEFAULT_BLUEPRINTS
 
-   app.config['DEBUG'] = True
-   app.config['STATIC_FOLDER'] = '/static'
+   app.config.from_yaml(os.path.join(BASE_DIR, "config.yml"))
 
    load_blueprints(app, blueprints)
 
