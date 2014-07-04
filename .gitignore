@@ -1,0 +1,16 @@
+.virtualenv/*
+!.virtualenv/.gitkeep
+
+skeleton/static/c/*
+!skeleton/static/c/.gitkeep
+
+# Ignore all external dependencies
+node_modules
+bower_components
+
+# Ignore all compiled python files
+*.pyc
+
+# Ignore the main config file. We will distribute a .dist file instead that
+# can be copied over the config and updated.
+config.yml

@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "less": "1.7.x",
+    "yuicompressor": "2.4.x",
+    "bower": "1.3.x"
+  }
+}

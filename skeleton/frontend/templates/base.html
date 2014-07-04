@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>{% block title %}Flask Skeleton{% endblock %}</title>
+
+    {% block styles %}
+      <link rel="icon" type="image/png" href="/static/img/cw-icon.png">
+    {% endblock %}
+  </head>
+  <body>
+    {% block body %}{% endblock %}
+    {% block scripts %}
+      <script src="{{ config.STATIC_FOLDER }}/c/js/jquery.min.js"></script>
+      <script src="{{ config.STATIC_FOLDER }}/c/js/underscore.js"></script>
+    {% endblock %}
+  </body>
+</html>
