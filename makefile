@@ -17,7 +17,10 @@ python27 = `which pytohn2.7`
 
 .PHONY: js css pip
 
-all: pip css js
+all: pip css js config.yml
+
+config.yml:
+	cp config.yml.dist config.yml
 
 .virtualenv/2.7:
 	virtualenv --python=$(python27) .virtualenv/2.7
@@ -38,17 +41,20 @@ bower: node
 	./node_modules/.bin/bower install
 
 css: node bower
-	if ! [ -d $(modulename)/static/c/css ]; then mkdir $(modulename)/static/c/css; fi
+	if ! [ -d $(modulename)/static/c/css ]; then mkdir -p $(modulename)/static/c/css; fi
 	./node_modules/.bin/lessc scripts/less/init.less $(modulename)/static/c/css/core.css
 
 js: node bower
-	if ! [ -d $(modulename)/static/c/js ]; then mkdir $(modulename)/static/c/js; fi
+	if ! [ -d $(modulename)/static/c/js ]; then mkdir -p $(modulename)/static/c/js; fi
 	# For unminified script files you should compress them using the yuicompressor:
 	# ./node_modules/.bin/yuicompressor [SOURCE_FILE] > $(modulename)/static/c/js/[DESTINATION_FILE]
 	cp bower_components/jquery/dist/jquery.min.js $(modulename)/static/c/js/jquery.min.js
 	cp bower_components/jquery/dist/jquery.min.map $(modulename)/static/c/js/jquery.min.map
 	./node_modules/.bin/yuicompressor bower_components/underscore/underscore.js > $(modulename)/static/c/js/underscore.js
 
-
 clean:
 	rm -Rf node_modules
+	rm -Rf bower_components
+	rm -Rf skeleton/static/c
+	rm -Rf .virtualenv
+	echo "WARNING: not removing config.yml! You can do this yourself if you want a full clean."
