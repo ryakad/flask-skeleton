@@ -26,12 +26,12 @@ class SkeletonConfig(Config):
       for key in ymlconf:
          self[key] = ymlconf[key]
 
-   def search(self, value_name, default=None):
+   def get(self, value_name, default=None):
       """Access config values using a dot notation.
 
       This method takes the name of a config value in dot notation::
 
-         app.config.search('db.host', 'localhost')
+         app.config.get('db.host', 'localhost')
 
       would return the value of app.config['DB']['HOST'] if it exists otherwise
       it will return the string 'localhost'.

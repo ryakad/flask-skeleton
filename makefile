@@ -20,7 +20,7 @@ python27 = `which pytohn2.7`
 all: pip scripts config.yml
 
 config.yml:
-	cp config.yml.dist config.yml
+	cp config.dist.yml config.yml
 
 .virtualenv/2.7:
 	virtualenv --python=$(python27) .virtualenv/2.7
