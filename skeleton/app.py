@@ -13,7 +13,7 @@ from flask import Flask, render_template
 from .frontend import frontend
 from .config import SkeletonConfig
 
-__all__ = ["get_app"]
+__all__ = ["create_app"]
 
 DEFAULT_BLUEPRINTS = [
    frontend
