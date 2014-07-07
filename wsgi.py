@@ -19,7 +19,7 @@ execfile(activate_this, dict(__file__=activate_this))
 if BASEDIR not in sys.path:
    sys.path.append(BASEDIR)
 
-from skeleton import get_app
+from skeleton import create_app
 
 # set the wsgi application
-application = get_app()
+application = create_app()

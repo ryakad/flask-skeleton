@@ -15,9 +15,9 @@ from flask.ext.script import Manager
 dirname = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.realpath(dirname + "/.."))
 
-from skeleton import get_app
+from skeleton import create_app
 
-manager = Manager(get_app())
+manager = Manager(create_app())
 
 @manager.command
 def hello():

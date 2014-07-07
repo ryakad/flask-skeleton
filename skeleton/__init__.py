@@ -1,2 +1,2 @@
 
-from .app import get_app
+from .app import create_app

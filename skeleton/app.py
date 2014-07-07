@@ -33,19 +33,18 @@ class SkeletonFlask(Flask):
       return SkeletonConfig(root_path, self.default_config)
 
 
-def get_app(config=None, app_name=None, blueprints=None):
+def create_app(config=None, app_name=None, blueprints=None):
    """Returns a flask application"""
    app = SkeletonFlask(__name__)
 
    if blueprints is None:
       blueprints = DEFAULT_BLUEPRINTS
 
+   # Load config first as we may need access to config values in later setup
+   # steps
    app.config.from_yaml(os.path.join(BASE_DIR, "config.yml"))
 
-   @app.errorhandler(404)
-   def page_not_found(e):
-      return render_template('error/404.html'), 404
-
+   load_error_handlers(app)
    load_blueprints(app, blueprints)
 
    return app
@@ -54,3 +53,14 @@ def load_blueprints(app, blueprints):
    """Register an array of blueprints with the provided application"""
    for blueprint in blueprints:
       app.register_blueprint(blueprint)
+
+def load_error_handlers(app):
+   """Setup any custom error handlers."""
+
+   @app.errorhandler(404)
+   def error_handler(e):
+      return render_template('error/404.html'), 404
+
+   @app.errorhandler(500)
+   def error_handler(e):
+      return render_template('error/500.html'), 500
