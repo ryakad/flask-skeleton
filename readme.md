@@ -1,5 +1,9 @@
-Flask Skeleton
-==============
+```
+ _____ _         _   _____ _       _     _
+|   __| |___ ___| |_|   __| |_ ___| |___| |_ ___ ___
+|   __| | .'|_ -| '_|__   | '_| -_| | -_|  _| . |   |
+|__|  |_|__,|___|_,_|_____|_,_|___|_|___|_| |___|_|_|
+```
 
 Here is my flask skeleton application. I have set this application in the
 way that I find easiest, and least cumbersome, to work with. If you have any
