@@ -1,8 +1,12 @@
 #
 # Flask Skeleton
 # Copyright (c) Ryan Kadwell <ryan@riaka.ca>
+#  _____ _         _   _____ _       _     _
+# |   __| |___ ___| |_|   __| |_ ___| |___| |_ ___ ___
+# |   __| | .'|_ -| '_|__   | '_| -_| | -_|  _| . |   |
+# |__|  |_|__,|___|_,_|_____|_,_|___|_|___|_| |___|_|_|
 #
-# Configuration for the flask application
+# Main configuration for the flask application.
 #
 # Author: Ryan Kadwell <ryan@riaka.ca>
 #

@@ -4,7 +4,6 @@
 # Copyright (c) Ryan Kadwell <ryan@riaka.ca>
 #
 #
-#
 # Author: Ryan Kadwell <ryan@riaka.ca>
 #
 
