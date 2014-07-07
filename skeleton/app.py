@@ -9,7 +9,7 @@
 
 import os
 import sys
-from flask import Flask
+from flask import Flask, render_template
 from .frontend import frontend
 from .config import SkeletonConfig
 
@@ -41,6 +41,10 @@ def get_app(config=None, app_name=None, blueprints=None):
       blueprints = DEFAULT_BLUEPRINTS
 
    app.config.from_yaml(os.path.join(BASE_DIR, "config.yml"))
+
+   @app.errorhandler(404)
+   def page_not_found(e):
+      return render_template('error/404.html'), 404
 
    load_blueprints(app, blueprints)
 

@@ -56,7 +56,7 @@ following code:
 
 ```python
 from flask import current_app
-host = current_app.config.get('database.host', 'SOME DEFAULT')
+host = current_app.config.get('database.host', 'localhost')
 ```
 
 This will set the variable host to localhost. If database.host is not defined
@@ -82,11 +82,12 @@ command for this is:
 ./bin/manage.py scripts make scripts
 ```
 
-> For more information on any part of this project please see the source code
-> that was distributed with this readme file.
-
 License
 -------
 
 This project is licensed under the MIT license located in the file
 `license.txt` that was distributed with this source.
+
+
+> For additional insight into any part of this project please see the source
+> code that was distributed with this readme file.
