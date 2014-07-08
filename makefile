@@ -12,7 +12,7 @@ modulename = skeleton
 
 # Find the path to the python binaries that we are using.
 python33 = `which python3.3`
-python27 = `which pytohn2.7`
+python27 = `which python2.7`
 
 
 .PHONY: js css scripts pip
