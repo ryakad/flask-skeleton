@@ -37,16 +37,23 @@ class SkeletonFlask(Flask):
       return SkeletonConfig(root_path, self.default_config)
 
 
-def create_app(config=None, app_name=None, blueprints=None):
+def create_app(app_name=None, blueprints=None, config='config.yml'):
    """Returns a flask application"""
-   app = SkeletonFlask(__name__)
+   if not app_name:
+      app_name = __name__
+
+   app = SkeletonFlask(app_name)
 
    if blueprints is None:
       blueprints = DEFAULT_BLUEPRINTS
 
+   config_file = os.path.join(BASE_DIR, config)
+   if not os.path.exists(config_file):
+      raise Exception('The config file {0} does not exist'.format(config_file))
+
    # Load config first as we may need access to config values in later setup
    # steps
-   app.config.from_yaml(os.path.join(BASE_DIR, "config.yml"))
+   app.config.from_yaml(config_file)
 
    load_error_handlers(app)
    load_blueprints(app, blueprints)

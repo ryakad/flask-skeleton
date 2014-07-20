@@ -14,3 +14,4 @@ bower_components
 # Ignore the main config file. We will distribute a .dist file instead that
 # can be copied over the config and updated.
 config.yml
+config_test.yml
